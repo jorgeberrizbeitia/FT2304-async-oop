@@ -163,3 +163,45 @@ console.log( person.felizNoCumpleaños() )
 
 
 
+// CLASES
+// La clase no es el objeto
+// La clase es la PLANTILLA para crear nuevos objetos
+// todas las clases deberian utilizar PascalCasting
+
+class Hero {
+
+  constructor( nameParam, secretIdentity ) {
+    // * propiedades de la clase
+    this.name = nameParam;
+    this.secretIdentity = secretIdentity;
+    this.isEvil = false; // hard coded
+  }
+
+  // * metodos de la clase
+  // unMetodo() { ... }
+  // unMetodoDeFlechita = () => { ... }
+
+  revealSecret = () => {
+    return `Mi identidad secreta es ${this.secretIdentity}`
+  }
+
+  turnEvil = () => {
+    this.isEvil = true;
+    return `Yo, ${this.name} ahora soy villano, MUAHAHAHAHA`
+  }
+
+}
+
+// vamos a crear un objeto, basado en la clase (plantilla) Hero
+let hero1 = new Hero( "Iron Man", "Tony Stark" )
+let hero2 = new Hero( "Black Widow", "Natasha Romanoff" )
+
+console.log(hero1)
+console.log(hero2)
+
+console.log( hero1.revealSecret() )
+console.log( hero2.revealSecret() )
+
+console.log( hero1.turnEvil() )
+
+console.log(hero1)

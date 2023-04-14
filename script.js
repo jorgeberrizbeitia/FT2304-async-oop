@@ -53,52 +53,113 @@ array.forEach( (algo) => {
 
 
 
-// setTimeout y setInterval
+// // setTimeout y setInterval
 
-// setTimeout
+// // setTimeout
 
-setTimeout( () => {
-  console.log("timer a los 3 segundos")
-}, 3000 ) // 3.  Luego todo lo asincrono
-// 2 argumentos
-// 1. funcion callback a ejecutar.
-// 2. un tiempo en ms que tarda en empezar a ejecutarla.
+// setTimeout( () => {
+//   console.log("timer a los 3 segundos")
+// }, 3000 ) // 3.  Luego todo lo asincrono
+// // 2 argumentos
+// // 1. funcion callback a ejecutar.
+// // 2. un tiempo en ms que tarda en empezar a ejecutarla.
 
-setTimeout( () => {
-  console.log("timer despues de 1 segundo")
-}, 1000 ) // 2. Luego todo lo asincrono
+// setTimeout( () => {
+//   console.log("timer despues de 1 segundo")
+// }, 1000 ) // 2. Luego todo lo asincrono
 
-console.log("ejecucion sincrona") // 1. JS ejecuta primero todo lo que sea SINCRONO
+// console.log("ejecucion sincrona") // 1. JS ejecuta primero todo lo que sea SINCRONO
 
-// JS es un lenguaje SINCRONO. (todo se ejecuta en orden y solo continua cuando termina cada operación)
-// PERO tiene comportamientos ASINCRONOS (se ejecutan en diferentes momentos de tiempo)
-
-
-// setInterval
-
-let intervalId = setInterval( () => {
-  console.log("ejecutando intervalo")
-}, 1000 )
+// // JS es un lenguaje SINCRONO. (todo se ejecuta en orden y solo continua cuando termina cada operación)
+// // PERO tiene comportamientos ASINCRONOS (se ejecutan en diferentes momentos de tiempo)
 
 
-// clearInterval() Detiene un intervalo
-// pasarle el ID del intervalo a detener
+// // setInterval
 
-setTimeout( () => {
-  // quiero detenr el intervalo anterior
-  clearInterval(intervalId)
-}, 6000 )
+// let intervalId = setInterval( () => {
+//   console.log("ejecutando intervalo")
+// }, 1000 )
 
 
-let counter = 0;
-let id = setInterval( () => {
-  counter++
+// // clearInterval() Detiene un intervalo
+// // pasarle el ID del intervalo a detener
 
-  console.log("ejecutando intervalo", counter)
+// setTimeout( () => {
+//   // quiero detenr el intervalo anterior
+//   clearInterval(intervalId)
+// }, 6000 )
 
-  if (counter >= 6) {
-    clearInterval(id)
+
+// let counter = 0;
+// let id = setInterval( () => {
+//   counter++
+
+//   console.log("ejecutando intervalo", counter)
+
+//   if (counter >= 6) {
+//     clearInterval(id)
+//   }
+
+// }, 1000 )
+
+
+
+// OOP
+
+
+let person = {
+  name: "alicia",
+  place: "Pais de Las Maravillas",
+  friends: ["Sombrerero loco", "Humpty Dumpty", "Liebre de Marzo", "Conejo Blanco", "Gato Chesire"],
+  greet() {
+    // return "Hola, soy alicia"
+    // return `hola, soy ${person.name}`
+    // la palabra reservada "this"
+    // console.log(this) // console.log nunca afecta la ejecucion
+    return `hola, soy ${this.name} de ${this.place}`
+  },
+
+  currentSize() {
+    // deberia decirnos aleatoriamente si Alicia es pequeña o es Grande.
+    let randomNumber = Math.random() * 2 // 0 - 1.999999
+    let randomFloor = Math.floor(randomNumber) // 0 o 1
+    console.log(randomFloor)
+    if (randomFloor === 1) {
+      return `${this.name} es grande`
+    } else {
+      return `${this.name} es pequeña`
+    }
+    // 50% => "Alicia es grande"
+    // 50% => "Alicia es pequeña"
+  },
+
+  felizNoCumpleaños() {
+    // le desee feliz no cumpleaños a un amigos de Alicia aleatorio
+    let randomNumber = Math.random() * this.friends.length
+    let randomFloor = Math.floor(randomNumber) // 0 y 4
+    console.log(randomFloor)
+
+    let randomFriend = this.friends[randomFloor]
+    return `Feliz Feliz no cumpleaños a ${randomFriend}`
+
   }
 
-}, 1000 )
+}
+
+console.log( person.name )
+console.log( person.friends[0] )
+
+console.log( person.greet() )
+
+person.name = "Alicia";
+
+console.log(person.name)
+console.log( person.greet() )
+console.log( person.currentSize() )
+console.log( person.felizNoCumpleaños() )
+
+
+// let user = person;
+
+
 

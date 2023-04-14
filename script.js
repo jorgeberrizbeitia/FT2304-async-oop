@@ -205,3 +205,39 @@ console.log( hero2.revealSecret() )
 console.log( hero1.turnEvil() )
 
 console.log(hero1)
+
+
+// SUBCLASSES
+
+// para definir que será un subclase de otra usamos la palabra reservada "extends"
+
+class SuperHero extends Hero {
+
+  constructor(name, secretIdentity, superPower) {
+
+    super(name, secretIdentity)
+    // super pide a la clase padre (Hero) las propiedades y envia los valores como argumentos.
+
+    // ahora nos permite agregar nuestras propiedades
+    this.superPower = superPower;
+
+  }
+
+  useSuperPower = ( target ) => {
+    // console.log(target)
+    return `Usando el poder ${this.superPower} en ${target.name}`
+  }
+
+}
+
+let superhero1 = new SuperHero( "Spiderman", "Peter Parker", "Lanzar Telaraña" )
+// console.log(superhero1)
+
+let superhero2 = new SuperHero( "Doctor Strange", "Steven Strange", "Poder misticos" )
+// console.log(superhero2)
+
+
+console.log( superhero1.useSuperPower( superhero2 ) )
+
+console.log( superhero2.useSuperPower( superhero1 ) )
+console.log( superhero1.useSuperPower( hero1 ) )
